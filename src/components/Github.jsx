@@ -18,7 +18,7 @@ const Github = () => {
       searchUsers(query);
     }, 300);
 
-    return () => clearTimeout(timer);
+
   }, [query]);
 
   const searchUsers = async (searchQuery) => {
@@ -57,9 +57,10 @@ const Github = () => {
         prevIndex > 0 ? prevIndex - 1 : users.length - 1
       );
     } else if (e.key === 'Enter' && selectedIndex >= 0) {
-    
+      
+      setQuery(users[selectedIndex].login);
       setUsers([]) 
-      // setQuery("")
+     
     }
   };
 
