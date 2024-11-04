@@ -7,9 +7,9 @@ function App() {
 
   return (
     <>
-      {/* <Github/> */}
+      <Github/>
 
-      <Comment/>
+      {/* <Comment/> */}
    
     </>
   )
