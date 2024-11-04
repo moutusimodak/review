@@ -9,8 +9,8 @@ const Comment = () => {
 
     const newComments = JSON.parse(JSON.stringify(comments));
 
-    const addCommentRecursive = (tree, id) => {
-      for (const comment of tree) {
+    const addCommentRecursive = (val, id) => {
+      for (const comment of val) {
         if (comment.id === id) {
           comment.replies.push({ id: Date.now(), text, replies: [] });
           return true;
@@ -31,13 +31,13 @@ const Comment = () => {
   const deleteComment = (commentId) => {
     const newComments = JSON.parse(JSON.stringify(comments));
 
-    const deleteCommentRecursive = (tree, id) => {
-      for (let i = 0; i < tree.length; i++) {
-        if (tree[i].id === id) {
-          tree.splice(i, 1);
+    const deleteCommentRecursive = (val, id) => {
+      for (let i = 0; i < val.length; i++) {
+        if (val[i].id === id) {
+            val.splice(i, 1);
           return true;
         }
-        if (deleteCommentRecursive(tree[i].replies, id)) return true;
+        if (deleteCommentRecursive(val[i].replies, id)) return true;
       }
       return false;
     };
