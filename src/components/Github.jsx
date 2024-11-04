@@ -57,7 +57,9 @@ const Github = () => {
         prevIndex > 0 ? prevIndex - 1 : users.length - 1
       );
     } else if (e.key === 'Enter' && selectedIndex >= 0) {
-      window.open(users[selectedIndex], '_blank');
+    
+      setUsers([]) 
+      // setQuery("")
     }
   };
 
