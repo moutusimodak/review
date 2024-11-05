@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Nesting from "./Nesting";
+import {v4 as uuidv4} from 'uuid'
 
 const Comment = () => {
   const [comments, setComments] = useState([]);
@@ -12,7 +13,7 @@ const Comment = () => {
     const addCommentRecursive = (val, id) => {
       for (const comment of val) {
         if (comment.id === id) {
-          comment.replies.push({ id: Date.now(), text, replies: [] });
+          comment.replies.push({ id: uuidv4(), text, replies: [] });
           return true;
         }
         if (addCommentRecursive(comment.replies, id)) return true;
@@ -21,7 +22,7 @@ const Comment = () => {
     };
 
     if (commentId === -1) {
-      newComments.push({ id: Date.now(), text, replies: [] });
+      newComments.push({ id: uuidv4(), text, replies: [] });
     } else {
       addCommentRecursive(newComments, commentId);
     }
